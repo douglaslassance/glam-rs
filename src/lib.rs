@@ -296,7 +296,7 @@ mod features;
 
 #[cfg(all(
     target_arch = "aarch64",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod neon;
 
@@ -305,13 +305,13 @@ mod spirv;
 
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod sse2;
 
 #[cfg(all(
     target_feature = "simd128",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod wasm32;
 
@@ -320,7 +320,7 @@ mod coresimd;
 
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 use align16::Align16;
 

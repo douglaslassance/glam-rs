@@ -7,19 +7,19 @@ mod coresimd;
 
 #[cfg(all(
     target_arch = "aarch64",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod neon;
 
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod sse2;
 
 #[cfg(all(
     target_feature = "simd128",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod wasm32;
 
@@ -30,7 +30,7 @@ mod wasm32;
         target_feature = "sse2",
         target_feature = "simd128"
     )),
-    feature = "scalar-math"
+    feature = "scalar-math", feature = "scalar-backend"
 ))]
 mod scalar;
 
@@ -40,34 +40,34 @@ pub use bvec4::{bvec4, BVec4};
 
 #[cfg(all(
     target_arch = "aarch64",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 pub use neon::bvec3a::{bvec3a, BVec3A};
 #[cfg(all(
     target_arch = "aarch64",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 pub use neon::bvec4a::{bvec4a, BVec4A};
 
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 pub use sse2::bvec3a::{bvec3a, BVec3A};
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 pub use sse2::bvec4a::{bvec4a, BVec4A};
 
 #[cfg(all(
     target_feature = "simd128",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 pub use wasm32::bvec3a::{bvec3a, BVec3A};
 #[cfg(all(
     target_feature = "simd128",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 pub use wasm32::bvec4a::{bvec4a, BVec4A};
 
@@ -83,7 +83,7 @@ pub use coresimd::bvec4a::{bvec4a, BVec4A};
         target_feature = "sse2",
         target_feature = "simd128"
     )),
-    feature = "scalar-math"
+    feature = "scalar-math", feature = "scalar-backend"
 ))]
 pub use scalar::bvec3a::{bvec3a, BVec3A};
 
@@ -94,7 +94,7 @@ pub use scalar::bvec3a::{bvec3a, BVec3A};
         target_feature = "sse2",
         target_feature = "simd128"
     )),
-    feature = "scalar-math"
+    feature = "scalar-math", feature = "scalar-backend"
 ))]
 pub use scalar::bvec4a::{bvec4a, BVec4A};
 

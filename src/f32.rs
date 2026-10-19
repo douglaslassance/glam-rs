@@ -16,25 +16,25 @@ mod coresimd;
         target_feature = "sse2",
         target_feature = "simd128"
     )),
-    feature = "scalar-math"
+    feature = "scalar-math", feature = "scalar-backend"
 ))]
 mod scalar;
 
 #[cfg(all(
     target_arch = "aarch64",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod neon;
 
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod sse2;
 
 #[cfg(all(
     target_feature = "simd128",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 mod wasm32;
 
@@ -45,25 +45,25 @@ mod wasm32;
         target_feature = "sse2",
         target_feature = "simd128"
     )),
-    feature = "scalar-math"
+    feature = "scalar-math", feature = "scalar-backend"
 ))]
 use scalar::*;
 
 #[cfg(all(
     target_arch = "aarch64",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 use neon::*;
 
 #[cfg(all(
     target_feature = "sse2",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 use sse2::*;
 
 #[cfg(all(
     target_feature = "simd128",
-    not(any(feature = "core-simd", feature = "scalar-math"))
+    not(any(feature = "core-simd", feature = "scalar-math", feature = "scalar-backend"))
 ))]
 use wasm32::*;
 

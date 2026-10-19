@@ -27,6 +27,8 @@ glam-assert = []
 
 # this is primarily for testing the fallback implementation
 scalar-math = []
+# The scalar maths of `scalar-math` on every target, keeping the SIMD types' 16 byte alignment and layout.
+scalar-backend = []
 
 # align types to match CUDA requirements
 cuda = []
